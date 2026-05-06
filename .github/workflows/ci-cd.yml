@@ -19,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'  # Usa la versión de Python que necesites
+        python-version: '3.8'
 
     - name: Clean pip cache
       run: |
@@ -46,22 +46,26 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      
-    - name: Debug AWS Credentials (Only to verify)
-      run: |
-        echo "AWS credentials are being used..."  # Mensaje de depuración para verificar
 
     - name: Set up AWS CLI
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}  # Usando el secreto de AWS
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # Usando el secreto de AWS
         aws-region: 'us-east-2'  # Cambia por tu región de AWS
+
+    - name: Debug AWS Credentials (Optional)
+      run: |
+        aws sts get-caller-identity  # Verificar si las credenciales están funcionando correctamente
 
     - name: Install Elastic Beanstalk CLI
       run: |
         pip install awsebcli
 
+    - name: Initialize Elastic Beanstalk environment
+      run: |
+        eb init -p python-3.8 flask-app --region us-east-2  # Cambia 'flask-app' por el nombre de tu aplicación
+
     - name: Deploy to Elastic Beanstalk
       run: |
-        eb deploy
+        eb deploy  # Desplegar la aplicación a Elastic Beanstalk
