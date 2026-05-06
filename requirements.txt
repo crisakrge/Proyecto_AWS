@@ -8,35 +8,35 @@ cement==2.10.14
 certifi==2026.4.22
 cffi==1.17.1  # Reemplazado por una versión disponible
 charset-normalizer==3.4.7
-click==8.3.3
-cryptography==48.0.0
-decorator==5.2.1
-Flask==2.2.2  # Reemplazado por una versión estable de Flask
+click==8.1.7  # Reemplazado por una versión compatible
+cryptography==3.4.8  # Actualizar a una versión estable (compatible con Python 3.x)
+decorator==5.0.9  # Cambiar a una versión más estable
+Flask==2.2.2  # Versión estable de Flask
 Flask-SQLAlchemy==2.5.1  # Agregado si usas bases de datos (opcional)
-idna==3.13
-iniconfig==2.3.0
-invoke==3.0.3
-itsdangerous==2.2.0
-Jinja2==3.1.6
-jinxed==1.4.0
-jmespath==1.1.0
-MarkupSafe==3.0.3
-packaging==26.2
-paramiko==4.0.0
-pathspec==0.12.1
-pluggy==1.6.0
-pycparser==3.0
-Pygments==2.20.0
-PyNaCl==1.6.2
-pytest==9.0.3
-python-dateutil==2.9.0.post0
-PyYAML==6.0.3
-requests==2.33.1
-semantic-version==2.10.0
-setuptools==82.0.1
-six==1.17.0
-termcolor==2.5.0
-urllib3==2.6.3
-wcwidth==0.2.14
-Werkzeug==2.2.2  # Versión compatible con Flask 2.x
-wrapt==2.1.2
+idna==3.13  # Mantener versión estable
+iniconfig==2.3.0  # Correcto
+invoke==3.0.3  # Correcto
+itsdangerous==2.2.0  # Correcto
+Jinja2==3.1.6  # Correcto
+jinxed==1.4.0  # Mantener si es necesario
+jmespath==1.1.0  # Correcto
+MarkupSafe==2.1.1  # Asegurarse de usar una versión compatible
+packaging==21.3  # Actualizar a una versión estable
+paramiko==2.9.1  # Mantener si es necesario
+pathspec==0.12.1  # Correcto
+pluggy==1.0.0  # Actualizar a una versión más compatible
+pycparser==2.21  # Actualizar a una versión estable
+Pygments==2.10.0  # Mantener versión estable
+PyNaCl==1.6.2  # Correcto
+pytest==7.1.2  # Actualizar a una versión compatible
+python-dateutil==2.8.2  # Versión estable de python-dateutil
+PyYAML==5.4.1  # Actualizar a una versión más estable
+requests==2.27.1  # Actualizar a una versión compatible
+semantic-version==2.10.0  # Correcto
+setuptools==57.5.0  # Versión estable
+six==1.16.0  # Actualizar a versión estable
+termcolor==1.1.0  # Actualizar a una versión más compatible
+urllib3==1.26.9  # Actualizar a una versión estable
+wcwidth==0.2.5  # Mantener si es necesario
+Werkzeug==2.1.2  # Compatible con Flask 2.x
+wrapt==1.13.3  # Actualizar si es necesario
