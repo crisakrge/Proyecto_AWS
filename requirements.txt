@@ -6,7 +6,7 @@ blinker==1.8.2  # Reemplazado por una versión disponible
 botocore==1.27.0  # Actualizado a la última versión disponible
 cement==2.10.14
 certifi==2026.4.22
-cffi==2.0.0
+cffi==1.17.1  # Reemplazado por una versión disponible
 charset-normalizer==3.4.7
 click==8.3.3
 cryptography==48.0.0
