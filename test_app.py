@@ -1,9 +1,9 @@
 import pytest
-from application import app
+from application import application  # Cambiar 'app' por 'application'
 
 @pytest.fixture
 def client():
-    with app.test_client() as client:
+    with application.test_client() as client:  # Cambiar 'app' por 'application'
         yield client
 
 def test_hello(client):
