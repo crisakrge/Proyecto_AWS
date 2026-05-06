@@ -19,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'
+        python-version: '3.11'
 
     - name: Clean pip cache
       run: |
@@ -64,7 +64,7 @@ jobs:
 
     - name: Initialize Elastic Beanstalk environment
       run: |
-        eb init -p python-3.9 proyecto-aws --region us-east-2  # Cambia 'flask-app' por el nombre de tu aplicación
+        eb init -p python-3.11 proyecto-aws --region us-east-2  # Cambia 'flask-app' por el nombre de tu aplicación
 
     - name: Deploy to Elastic Beanstalk
       run: |
