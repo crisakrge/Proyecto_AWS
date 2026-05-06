@@ -38,6 +38,6 @@ setuptools==57.5.0  # Versión estable
 six==1.16.0  # Actualizar a versión estable
 termcolor==2.4.0  # Actualizar a una versión más compatible
 urllib3==1.26.9  # Actualizar a una versión estable
-wcwidth==0.2.13  # Mantener si es necesario
+wcwidth>=0.2.14  # Reemplazado por una versión compatible con awsebcli y blessed
 Werkzeug==2.1.2  # Compatible con Flask 2.x
 wrapt==1.13.3  # Actualizar si es necesario
