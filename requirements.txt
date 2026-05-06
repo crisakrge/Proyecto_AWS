@@ -14,9 +14,9 @@ decorator==5.0.9  # Cambiar a una versión más estable
 Flask==2.2.2  # Versión estable de Flask
 Flask-SQLAlchemy==2.5.1  # Agregado si usas bases de datos (opcional)
 idna==3.13  # Mantener versión estable
-
 iniconfig==2.1.0  # Reemplazado por una versión disponible
-invoke==3.0.3  # Correcto
+
+invoke==2.2.1  # Reemplazado por la versión disponible
 itsdangerous==2.2.0  # Correcto
 Jinja2==3.1.6  # Correcto
 jinxed==1.4.0  # Mantener si es necesario
