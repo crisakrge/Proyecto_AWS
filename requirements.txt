@@ -3,7 +3,7 @@ awsebcli==3.27.1
 bcrypt==5.0.0
 blessed==1.27.0
 blinker==1.8.2  # Reemplazado por una versión disponible
-botocore==1.27.0  # Actualizado a la última versión disponible
+botocore>=1.35.0  # Cambiado a una versión compatible con awsebcli
 cement==2.10.14
 certifi==2026.4.22
 cffi==1.17.1  # Reemplazado por una versión disponible
