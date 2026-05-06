@@ -52,5 +52,4 @@ jobs:
 
     - name: Deploy to Elastic Beanstalk
       run: |
-        eb init -p python-3.8 flask-app --region us-east-1  # Cambia flask-app por el nombre de tu app
         eb deploy
