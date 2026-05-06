@@ -3,13 +3,13 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master
+      - master  # O la rama que uses para producción
   pull_request:
     branches:
-      - master
+      - master  # También se ejecutará en pull requests
 
 jobs:
-  test:
+  test:  # Job de pruebas (CI)
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'
+        python-version: '3.8'  # Usa la versión de Python que necesites
 
     - name: Install dependencies
       run: |
@@ -28,19 +28,29 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest
+        pytest  # Este comando ejecutará las pruebas con pytest
 
-  deploy:
+  deploy:  # Job de despliegue (CD)
     runs-on: ubuntu-latest
-    needs: test
-    if: success()
+    needs: test  # El despliegue solo se ejecuta si las pruebas son exitosas
+    if: success()  # Solo se ejecuta si las pruebas anteriores fueron exitosas
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Deploy to production
+    - name: Set up AWS CLI
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: 'us-east-1'  # Cambia por tu región de AWS
+
+    - name: Install Elastic Beanstalk CLI
       run: |
-        echo "Deploying to production server"
-        # Comando para desplegar a tu servidor, por ejemplo:
-        # ssh user@host "cd /path/to/app && git pull && systemctl restart app"
+        pip install awsebcli
+
+    - name: Deploy to Elastic Beanstalk
+      run: |
+        eb init -p python-3.8 flask-app --region us-east-1  # Cambia flask-app por el nombre de tu app
+        eb deploy
