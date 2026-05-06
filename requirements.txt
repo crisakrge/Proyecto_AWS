@@ -7,10 +7,10 @@ botocore>=1.35.0,<2  # Actualizado para ser compatible con awsebcli
 cement==2.10.14
 certifi==2026.4.22
 Cython==0.29.24  # O la versión más reciente compatible
-cffi>=2.0.0
+cffi>=2.0.0  # Actualiza cffi para ser compatible con pynacl y cryptography
 charset-normalizer==3.4.7
 click==8.1.7
-cryptography==3.4.8  # O actualizar a una versión compatible
+cryptography==3.4.8 # O actualizar a una versión compatible
 decorator==5.0.9
 Flask-SQLAlchemy==2.5.1
 idna==3.13
