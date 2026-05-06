@@ -22,7 +22,7 @@ jinxed==1.4.0  # Mantener si es necesario
 
 jmespath==1.0.1  # Reemplazado por la versión disponible
 MarkupSafe==2.1.1  # Asegurarse de usar una versión compatible
-packaging==21.3  # Actualizar a una versión estable
+packaging==24.2  # Actualizar a una versión estable
 paramiko==2.9.1  # Mantener si es necesario
 pathspec==0.12.1  # Correcto
 pluggy==1.0.0  # Actualizar a una versión más compatible
