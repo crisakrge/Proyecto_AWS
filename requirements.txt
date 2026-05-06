@@ -30,8 +30,6 @@ Pygments==2.20.0
 PyNaCl==1.6.2
 pytest==9.0.3
 python-dateutil==2.9.0.post0
-pypiwin32==223  # Eliminar si no estás usando Windows
-pywin32==311    # Eliminar si no estás usando Windows
 PyYAML==6.0.3
 requests==2.33.1
 semantic-version==2.10.0
