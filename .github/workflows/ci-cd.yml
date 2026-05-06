@@ -46,7 +46,16 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
+      
+    - name: Debug AWS Credentials
+      run: |
+        echo "AWS_ACCESS_KEY_ID is set: ${{ secrets.AWS_ACCESS_KEY_ID }}"  # Solo para verificar si el secreto es accesible
+        echo "AWS_SECRET_ACCESS_KEY is set: ${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+        
+    - name: Debug AWS Credentials
+      run: |
+        aws sts get-caller-identity  # Esto muestra la identidad del usuario de AWS que está utilizando las credenciales
+        
     - name: Set up AWS CLI
       uses: aws-actions/configure-aws-credentials@v1
       with:
