@@ -30,7 +30,7 @@ Pygments==2.10.0
 pynacl==1.6.2  # O actualizar a una versión compatible
 pytest==7.1.2
 python-dateutil==2.8.2
-PyYAML==5.4.1
+PyYAML==5.3.1
 requests>=2.31
 semantic-version==2.10.0
 setuptools==57.5.0
