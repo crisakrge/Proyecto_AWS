@@ -3,16 +3,15 @@ awsebcli==3.27.1
 bcrypt==5.0.0
 blessed==1.27.0
 blinker==1.8.2
-botocore>=1.35.0
+botocore>=1.35.0,<2  # Actualizado para ser compatible con awsebcli
 cement==2.10.14
 certifi==2026.4.22
 Cython==0.29.24  # O la versión más reciente compatible
-cffi==1.17.1
+cffi>=2.0.0
 charset-normalizer==3.4.7
 click==8.1.7
-cryptography==3.4.8
+cryptography==3.4.8  # O actualizar a una versión compatible
 decorator==5.0.9
-Flask==2.2.2
 Flask-SQLAlchemy==2.5.1
 idna==3.13
 iniconfig==2.1.0
@@ -28,7 +27,7 @@ pathspec==0.12.1
 pluggy==1.0.0
 pycparser==2.21
 Pygments==2.10.0
-PyNaCl==1.6.2
+pynacl==1.6.2  # O actualizar a una versión compatible
 pytest==7.1.2
 python-dateutil==2.8.2
 PyYAML==5.4.1
@@ -39,5 +38,6 @@ six==1.16.0
 termcolor==2.4.0
 urllib3==1.26.9
 wcwidth>=0.2.14
-Werkzeug>=2.2.2
+Flask==2.2.2
+Werkzeug>=2.2.2  # Asegúrate de que la versión de Werkzeug sea compatible con Flask 2.2.2
 wrapt==1.13.3
