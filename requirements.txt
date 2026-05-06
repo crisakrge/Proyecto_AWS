@@ -36,7 +36,7 @@ requests>=2.31  # Cambiado a una versión compatible con awsebcli
 semantic-version==2.10.0  # Correcto
 setuptools==57.5.0  # Versión estable
 six==1.16.0  # Actualizar a versión estable
-termcolor==1.1.0  # Actualizar a una versión más compatible
+termcolor==2.4.0  # Actualizar a una versión más compatible
 urllib3==1.26.9  # Actualizar a una versión estable
 wcwidth==0.2.5  # Mantener si es necesario
 Werkzeug==2.1.2  # Compatible con Flask 2.x
