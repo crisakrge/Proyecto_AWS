@@ -2,7 +2,7 @@ ansicon==1.89.0
 awsebcli==3.27.1
 bcrypt==5.0.0
 blessed==1.27.0
-blinker==1.9.0
+blinker==1.8.2  # Reemplazado por una versión disponible
 botocore==1.43.4
 cement==2.10.14
 certifi==2026.4.22
