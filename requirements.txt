@@ -13,6 +13,7 @@ click==8.1.7
 cryptography==3.4.8 # O actualizar a una versión compatible
 decorator==5.0.9
 Flask-SQLAlchemy==2.5.1
+gunicorn==20.1.0  # Asegúrate de que estás usando una versión estable y compatible
 idna==3.13
 iniconfig==2.1.0
 invoke==2.2.1
