@@ -14,10 +14,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3  # Actualizado a la versión más reciente
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3  # Actualizado a la versión más reciente
       with:
         python-version: '3.11'
 
@@ -48,7 +48,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3  # Actualizado a la versión más reciente
 
     - name: Set up AWS CLI
       uses: aws-actions/configure-aws-credentials@v1
@@ -71,4 +71,4 @@ jobs:
 
     - name: Deploy to Elastic Beanstalk
       run: |
-        eb deploy  # Desplegar la aplicación a Elastic Beanstalk
+        eb deploy proyecto-aws-env  # Asegúrate de usar el nombre correcto del entorno
