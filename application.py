@@ -7,4 +7,4 @@ def hello():
     return 'Hello, AWS Flask App!'
 
 if __name__ == "__main__":
-    application.run(debug=False, host='0.0.0.0', port=8000)
+    application.run(debug=True, host='0.0.0.0', port=8000)
