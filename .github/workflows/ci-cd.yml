@@ -25,13 +25,16 @@ jobs:
       run: |
         pip cache purge  # Limpiar cualquier caché viejo
 
+    - name: Upgrade pip and setuptools
+      run: |
+        python -m pip install --upgrade pip setuptools  # Actualizar pip y setuptools a la última versión
+
     - name: Install Flask and Werkzeug specific versions
       run: |
         pip install Flask==2.2.2 Werkzeug==2.2.2  # Forzar la instalación de las versiones correctas
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
         pip install --no-binary :all: -r requirements.txt  # Instalar las dependencias desde requirements.txt
 
     - name: Run tests
