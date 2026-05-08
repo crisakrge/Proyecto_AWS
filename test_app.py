@@ -8,4 +8,4 @@ def client():
 
 def test_hello(client):
     rv = client.get('/')
-    assert rv.data == b'Hello, AWS Flask App!'  # Actualiza el valor esperado
+    assert rv.data == b'Hello, AWS Flask App! (UPDATE)'  # Actualiza el valor esperado
