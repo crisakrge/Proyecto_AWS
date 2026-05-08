@@ -14,61 +14,56 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # Usando la versión más reciente de checkout
+      uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v3  # Usando la versión más reciente de setup-python
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.9'
-
-    - name: Clean pip cache
-      run: |
-        pip cache purge  # Limpiar cualquier caché viejo
+        python-version: '3.11'
+        cache: 'pip' # Optimiza las corridas subsiguientes
 
     - name: Upgrade pip and setuptools
       run: |
-        python -m pip install --upgrade pip setuptools  # Actualizar pip y setuptools a la última versión
-
-    - name: Install Flask and Werkzeug specific versions
-      run: |
-        pip install Flask==2.2.2 Werkzeug==2.2.2  # Forzar la instalación de las versiones correctas
+        python -m pip install --upgrade pip setuptools
 
     - name: Install dependencies
       run: |
-        pip install --no-binary :all: -r requirements.txt  # Instalar las dependencias desde requirements.txt
+        # Instalamos Flask/Werkzeug y luego el resto de requirements
+        pip install Flask==2.2.2 Werkzeug==2.2.2
+        pip install -r requirements.txt
 
     - name: Run tests
       run: |
-        pytest  # Comando para ejecutar las pruebas con pytest
+        pytest
 
   deploy:  # Job de despliegue (CD)
     runs-on: ubuntu-latest
-    needs: test  # El despliegue solo se ejecuta si las pruebas son exitosas
-    if: success()
+    needs: test
+    if: github.ref == 'refs/heads/master' && success()
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # Usando la versión más reciente de checkout
+      uses: actions/checkout@v3
 
-    - name: Set up AWS CLI
-      uses: aws-actions/configure-aws-credentials@v1
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}  # Usando el secreto de AWS
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # Usando el secreto de AWS
-        aws-region: 'us-east-2'  # Cambia por tu región de AWS
+        python-version: '3.11'
 
-    - name: Debug AWS Credentials (Optional)
-      run: |
-        aws sts get-caller-identity  # Verificar si las credenciales están funcionando correctamente
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: 'us-east-2'
 
     - name: Install Elastic Beanstalk CLI
       run: |
+        python -m pip install --upgrade pip
         pip install awsebcli
 
-    - name: Initialize Elastic Beanstalk environment
+    - name: Initialize and Deploy to Elastic Beanstalk
       run: |
-        eb init -p python-3.9 proyecto-aws --region us-east-2  # Cambia 'flask-app' por el nombre de tu aplicación
-
-    - name: Deploy to Elastic Beanstalk
-      run: |
-        eb deploy --timeout 20m  # Establecer un timeout de 20 minutos para el despliegue
+        # Forzamos el uso de la plataforma Python 3.11 (Amazon Linux 2023)
+        eb init -p "Python 3.11" proyecto-aws --region us-east-2
+        eb deploy --timeout 20m
