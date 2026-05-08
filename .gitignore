@@ -1,6 +1,7 @@
 
 
 # Elastic Beanstalk Files
+*.pyc
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
