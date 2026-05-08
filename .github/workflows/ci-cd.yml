@@ -68,4 +68,4 @@ jobs:
       run: |
         # Forzamos el uso de la plataforma Python 3.11 (Amazon Linux 2023)
         eb init -p "Python 3.11" proyecto-aws --region us-east-2
-        eb deploy --timeout 20m
+        eb deploy --timeout 1200
