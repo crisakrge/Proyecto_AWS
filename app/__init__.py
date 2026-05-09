@@ -10,11 +10,16 @@ migrate = Migrate()
 def create_app():
     app = Flask(__name__)
     
-    # 1. Configuración (DEBE IR PRIMERO)
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-        'DATABASE_URL', 
-        'postgresql://admin_user:seidor*2026@localhost:5432/inventory_db'
-    )
+    # 1. Configuración de Base de Datos con prioridad
+    # Si TESTING es True o DATABASE_URL no existe, usamos SQLite para no romper el CI/CD
+    default_db = 'sqlite:///local.db'
+    database_url = os.environ.get('DATABASE_URL')
+    
+    if os.environ.get('FLASK_ENV') == 'testing':
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+    else:
+        app.config['SQLALCHEMY_DATABASE_URI'] = database_url or default_db
+    
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'senior-cloud-secret')
 
@@ -24,10 +29,11 @@ def create_app():
 
     # 3. Registrar Blueprints e importar Modelos
     with app.app_context():
+        # Importación interna para evitar ciclos
+        from app import models 
         from app.auth.routes import auth_bp
         from app.inventory.routes import inv_bp
         from app.dashboard.routes import dash_bp
-        from app import models # Esto asegura que Migrate vea las tablas
 
         app.register_blueprint(auth_bp, url_prefix='/auth')
         app.register_blueprint(inv_bp, url_prefix='/inventory')
@@ -35,9 +41,14 @@ def create_app():
 
     @app.route('/')
     def health_check():
+        # Lógica de detección de entorno para el JSON de respuesta
+        env_type = "local"
+        if os.environ.get('DATABASE_URL'):
+            env_type = "aws"
+            
         return {
             "status": "online", 
-            "environment": "aws" if os.environ.get('DATABASE_URL') else "local"
+            "environment": env_type
         }
 
     return app
